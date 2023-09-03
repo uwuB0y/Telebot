@@ -1,28 +1,19 @@
-import telebot
-import requests
-import time
+import telebot, time, requests, os
 
-token = "ur token"
-chatid = "@channelUser"
+token = "TOKEN"  # bot token
+chatid = "@n30arch" # channel username or your id
+name= "archlinux" # The name to be displayed as the link to your channel
+delay = 10 # Delay between each message
 bot = telebot.TeleBot(token)
-
-def proxyGay(): 
+while True: 
     try:
-        rq = requests.get("https://gimmeproxy.com/api/getProxy")
+        rq = requests.get("https://gimmeproxy.com/api/getProxy") # get a random proxy
         protocol = rq.json()["protocol"]
         ipport = rq.json()["ipPort"]
+        speed = rq.json()["speed"]
         country = rq.json()["country"]
-        messageProxy = f"*- New Proxy*\n*Ip-Port:* `{ipport}`.\n*Type:* {protocol}.\n*Country:* {country}.\n----- ------- ------- ----\n-=> [404](t.me/teamon404)"
-        bot.send_message(chatid, messageProxy, parse_mode="markdown", disable_web_page_preview=True)
-        print("done")
+        messageProxy = f"*- New Proxy*\n*Ip-Port:* `{ipport}`.\n*Type:* {protocol}.\n*Speed:* {speed}\n*Country:* {country}----- ------- ------- ----\n=> [{name}](t.me/{chatid})"
+        bot.send_message(chatid, messageProxy, parse_mode="markdown", disable_web_page_preview=True) # Send the message
+        time.sleep(delay) # Delay
     except Exception as e:
-        print(f"An error:\n{e}")
-        return
-
-def main():
-    while True:
-        proxyGay()
-        time.sleep(300) #every 300sec
-
-if __name__ == "__main__":
-    main()
+        print(e)
