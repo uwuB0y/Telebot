@@ -1,13 +1,14 @@
 # Telebot
-to run these file
+A simple telegram bot that sends random proxies in your channel
 
-run these commands:
+# run the bot
+run the following:
 
-pip install telebot
+``` shelll
+python3 -m venv env
+source env/bin/activate
+pip3install telebot requests time
+```
 
-pip install requests
-
-pip install time
-
-and after that Put ur token and ur channel user and make the bot admin in yur channel 
-and that's it
+and after that Put ur token and ur channel username and add the bot to your channel admins 
+and that's it!
